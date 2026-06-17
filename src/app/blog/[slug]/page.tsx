@@ -17,7 +17,8 @@ interface PageProps {
 }
 
 export default async function PostPage({ params }: PageProps) {
-    const { data } = await sanityFetch({ query: postBySlugQuery, params });
+    const { slug } = await params;
+    const { data } = await sanityFetch({ query: postBySlugQuery, params: { slug } });
 
     if (!data) notFound(); // renders your app/not-found.tsx
 
@@ -38,14 +39,14 @@ export default async function PostPage({ params }: PageProps) {
             )}
 
             {post.coverImage?.asset?.url && (
-                <div className="relative w-full h-72 mb-8 rounded-xl overflow-hidden">
+                <div className="relative mb-8 rounded-xl overflow-hidden">
                     <Image
                         src={post.coverImage.asset.url}
                         alt={post.title}
-                        className="object-contain"
+                        className="rounded-xl"
                         priority
-                        height={288}
-                        width={250}
+                        width={1200}
+                        height={630}
                     />
                 </div>
             )}

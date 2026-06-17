@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   images: {
-    remotePatterns: [{ hostname: "cdn.sanity.io" }],
+    remotePatterns: [{ protocol: 'https', hostname: "cdn.sanity.io" }],
   }
 };
 
